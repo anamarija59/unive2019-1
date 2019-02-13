@@ -16,11 +16,16 @@ class PredmetController extends Controller
     {
          $predmets=Predmet::all();
          //dd($predmets);
-         echo '<ul>';
-         foreach ($predmets as $key => $p) {
-          echo '<li>'.$p->nazpred.'</li>';
-         }
-         echo '</ul>';
+//         echo '<ul>';
+//         foreach ($predmets as $key => $p) {
+//          echo '<li>'.$p->nazpred.'</li>';
+//         }
+//         echo '</ul>';
+         return view('predmet.index', compact('predmets'));
+    }
+    public function top10() {
+     $predmets=Predmet::orderBy('upisanostud', 'desc')->take(10)->get();
+      return view('childprimjer', compact('predmets'));
     }
 
     /**

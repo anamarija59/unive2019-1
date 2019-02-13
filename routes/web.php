@@ -10,7 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/childblade', function () {
+    return view('childprimjer');
+});
+
+Route::get('predmets/top10','PredmetController@top10');
 Route::resource('predmets','PredmetController');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,3 +37,7 @@ Route::redirect('/here', '/there');
 Route::get('/there', function () {
     return "ja sam redirektan sa route here";
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
